@@ -48,8 +48,8 @@ if menu == "Researcher Profile":
     st.write(f"**Institution:** {institution}")
     
     st.image(
-    "https://medium.com/predict/aliens-the-cosmological-horizon-79e4525d35e3",
-    caption="The Event Horizon"
+    "https://as2.ftcdn.net/v2/jpg/07/54/47/57/1000_F_754475766_IFsiMAfL3W2EAdyeBubbe7FZNEAb6JKB.jpg",
+    caption="A CFD Simulation Image"
 )
 
 elif menu == "Publications":
@@ -134,5 +134,6 @@ elif menu == "Contact":
     email = "jane.doe@example.com"
 
     st.write(f"You can reach me at {email}.")
+
 
 
