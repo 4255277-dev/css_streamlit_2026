@@ -38,9 +38,9 @@ if menu == "Researcher Profile":
     st.sidebar.header("Profile Options")
 
     # Collect basic information
-    name = "Dr. Jane Doe"
-    field = "Astrophysics"
-    institution = "University of Science"
+    name = "Moegamat Anees Petersen"
+    field = "Material Science / Renewable Energy"
+    institution = "University of Western Cape (UWC)"
 
     # Display basic profile information
     st.write(f"**Name:** {name}")
@@ -48,8 +48,8 @@ if menu == "Researcher Profile":
     st.write(f"**Institution:** {institution}")
     
     st.image(
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-    caption="Nature (Pixabay)"
+    "https://medium.com/predict/aliens-the-cosmological-horizon-79e4525d35e3",
+    caption="The Event Horizon"
 )
 
 elif menu == "Publications":
@@ -134,4 +134,5 @@ elif menu == "Contact":
     email = "jane.doe@example.com"
 
     st.write(f"You can reach me at {email}.")
+
 
