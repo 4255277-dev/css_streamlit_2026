@@ -34,6 +34,10 @@ weather_data = pd.DataFrame({
 
 # Sections based on menu selection
 if menu == "Researcher Profile":
+    profile_pic = st.image(
+        "C:\Users\4255277\Downloads\IMG_20220725_171219.jpg"
+    )
+    
     st.title("Researcher Profile")
     st.sidebar.header("Profile Options")
 
@@ -44,7 +48,7 @@ if menu == "Researcher Profile":
     level_of_studies = "Master of Science (MSc)"
 
     # Display basic profile information
-    st.write(f"**Name:** {name}")
+    st.write(f"**Name:** {name} {profile_pic}")
     st.write(f"**Field of Research:** {field}")
     st.write(f"**Institution:** {institution}")
     st.write(f"**Level of Studies:** {level_of_studies}")
@@ -136,6 +140,7 @@ elif menu == "Contact":
     email = "4255277@myuwc.ac.za"
 
     st.write(f"You can reach me at {email}.")
+
 
 
 
