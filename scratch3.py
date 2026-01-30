@@ -9,7 +9,7 @@ st.set_page_config(page_title="Researcher Profile and STEM Data Explorer", layou
 st.sidebar.title("Navigation")
 menu = st.sidebar.radio(
     "Go to:",
-    ["Researcher Profile", "Publications", "STEM Data Explorer", "Contact"],
+    ["Researcher Profile", "Education", "Work Experience", "Publications", "Skills", "Hobbies", "Contact"],
 )
 
 # Dummy STEM data
@@ -41,11 +41,13 @@ if menu == "Researcher Profile":
     name = "Moegamat Anees Petersen"
     field = "Material Science / Renewable Energy"
     institution = "University of Western Cape (UWC)"
+    level_of_studies = "Master of Science (MSc)"
 
     # Display basic profile information
     st.write(f"**Name:** {name}")
     st.write(f"**Field of Research:** {field}")
     st.write(f"**Institution:** {institution}")
+    st.write(f"**Level of Studies:** {level_of_studies}")
     
     st.image(
     "https://as2.ftcdn.net/v2/jpg/07/54/47/57/1000_F_754475766_IFsiMAfL3W2EAdyeBubbe7FZNEAb6JKB.jpg",
@@ -134,6 +136,7 @@ elif menu == "Contact":
     email = "4255277@myuwc.ac.za"
 
     st.write(f"You can reach me at {email}.")
+
 
 
 
