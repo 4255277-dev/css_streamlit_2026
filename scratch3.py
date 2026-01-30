@@ -34,12 +34,8 @@ weather_data = pd.DataFrame({
 
 # Sections based on menu selection
 if menu == "Researcher Profile":
-    profile_pic = st.image(
-        "C:\Users\4255277\Downloads\IMG_20220725_171219.jpg"
-    )
     
     st.title("Researcher Profile")
-    st.sidebar.header("Profile Options")
 
     # Collect basic information
     name = "Moegamat Anees Petersen"
@@ -48,7 +44,7 @@ if menu == "Researcher Profile":
     level_of_studies = "Master of Science (MSc)"
 
     # Display basic profile information
-    st.write(f"**Name:** {name} {profile_pic}")
+    st.write(f"**Name:** {name}")
     st.write(f"**Field of Research:** {field}")
     st.write(f"**Institution:** {institution}")
     st.write(f"**Level of Studies:** {level_of_studies}")
@@ -58,34 +54,21 @@ if menu == "Researcher Profile":
     caption="A CFD Simulation Image"
 )
 
-elif menu == "Publications":
-    st.title("Publications")
-    st.sidebar.header("Upload and Filter")
+elif menu == "Education":
+    st.title("Education")
 
-    # Upload publications file
-    uploaded_file = st.file_uploader("Upload a CSV of Publications", type="csv")
-    if uploaded_file:
-        publications = pd.read_csv(uploaded_file)
-        st.dataframe(publications)
+    primary_school = "Cypress Primary School"
 
-        # Add filtering for year or keyword
-        keyword = st.text_input("Filter by keyword", "")
-        if keyword:
-            filtered = publications[
-                publications.apply(lambda row: keyword.lower() in row.astype(str).str.lower().values, axis=1)
-            ]
-            st.write(f"Filtered Results for '{keyword}':")
-            st.dataframe(filtered)
-        else:
-            st.write("Showing all publications")
+    primary_year_min = 2010
+    primary_year_max = 2016
+    
+    secondary_school = "Belgravia High School"
 
-        # Publication trends
-        if "Year" in publications.columns:
-            st.subheader("Publication Trends")
-            year_counts = publications["Year"].value_counts().sort_index()
-            st.bar_chart(year_counts)
-        else:
-            st.write("The CSV does not have a 'Year' column to visualize trends.")
+    secondary_year_min = 2017
+    secondary_year_max = 2021
+
+    st.write(f"**Primary School:** {primary_school} ({primary_year_min} - {primary_year_max})")
+    st.write(f"**Secondary School:** {secondary_school} ({secondary_year_min} - {secondary_year_max})")
 
 elif menu == "STEM Data Explorer":
     st.title("STEM Data Explorer")
@@ -140,6 +123,7 @@ elif menu == "Contact":
     email = "4255277@myuwc.ac.za"
 
     st.write(f"You can reach me at {email}.")
+
 
 
 
