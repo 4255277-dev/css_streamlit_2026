@@ -74,11 +74,7 @@ elif menu == "Education":
     item_2 = st.write("Top Achiever Awards (Grades 2,4,5,6,7)")
     item_3 = st.write("Junior Biologist Course (Grade 6)")
 
-    st.markdown(f"
-    * {item_1}
-    * {item_2}
-    * {item_3}
-    ")
+    st.write(f"* {item_1} \n * {item_2} \n * {item_3}")
 
 elif menu == "STEM Data Explorer":
     st.title("STEM Data Explorer")
@@ -133,6 +129,7 @@ elif menu == "Contact":
     email = "4255277@myuwc.ac.za"
 
     st.write(f"You can reach me at {email}.")
+
 
 
 
