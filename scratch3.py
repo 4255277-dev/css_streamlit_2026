@@ -70,6 +70,16 @@ elif menu == "Education":
     st.write(f"**Primary School:** {primary_school} ({primary_year_min} - {primary_year_max})")
     st.write(f"**Secondary School:** {secondary_school} ({secondary_year_min} - {secondary_year_max})")
 
+    item_1 = st.write("First School Leaving Certificate (FSLC)")
+    item_2 = st.write("Top Achiever Awards (Grades 2,4,5,6,7)")
+    item_3 = st.write("Junior Biologist Course (Grade 6)")
+
+    st.markdown(f"
+    * {item_1}
+    * {item_2}
+    * {item_3}
+    ")
+
 elif menu == "STEM Data Explorer":
     st.title("STEM Data Explorer")
     st.sidebar.header("Data Selection")
@@ -123,6 +133,7 @@ elif menu == "Contact":
     email = "4255277@myuwc.ac.za"
 
     st.write(f"You can reach me at {email}.")
+
 
 
 
