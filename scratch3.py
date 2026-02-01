@@ -1,5 +1,7 @@
 import streamlit as st
+import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import plotly.express as px
 
 # Set page title
@@ -139,6 +141,38 @@ elif menu == menu_item_3:
     st.write(f"({experience_start_year_4} - {experience_end_year_4})")
     st.write(f"\t * {experience_atr_4_1} \n \t * {experience_atr_4_2}")
 
+# elif menu == menu_item_4:
+#     st.title(f"{menu_item_4}")
+#     st.sidebar.header(f"{menu_item_4} Options")
+
+#     label_1 = "Leadership"
+#     label_2 = "Communication"
+#     label_3 = "Professionalism"
+#     label_4 = "Teamwork"
+#     label_5 = "Critical Thinking"
+
+#     size_1 = 20
+#     size_2 = 21
+#     size_3 = 18
+#     size_4 = 22
+#     size_5 = 19
+
+#     explode_1 = 0
+#     explode_2 = 0
+#     explode_3 = 0
+#     explode_4 = 0
+#     explode_5 = 0
+
+#     labels = [label_1, label_2, label_3, label_4, label_5]
+#     sizes = [size_1, size_2, size_3, size_4, size_5]
+#     explode = [explode_1, explode_2, explode_3, explode_4, explode_5]
+
+#     fig_1, ax_1 = plt.subplots()
+#     ax_1.pie(sizes, explode=explode, labels=labels, autopct = '%1.1f%%', shadow=True, startangle=90)
+#     ax_1.axis('equal')
+
+#     st.pyplot(fig_1)
+
 elif menu == menu_item_4:
     st.title(f"{menu_item_4}")
     st.sidebar.header(f"{menu_item_4} Options")
@@ -198,6 +232,7 @@ elif menu == menu_item_6:
 
 else:
     st.write("An invalid menu_item has been selected!")
+
 
 
 
