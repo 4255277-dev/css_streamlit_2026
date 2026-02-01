@@ -40,8 +40,8 @@ if menu == menu_item_1:
     st.write(f"**Field of Research:** {field}")
     st.write(f"**Institution:** {institution}")
 
-    image_url_link = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-    image_caption = "Nature (Pixabay)"
+    image_url_link = "https://www.shutterstock.com/search/cfd-simulation"
+    image_caption = "A CFD Simulation Image"
     
     st.image(
     image_url_link,
@@ -229,6 +229,7 @@ elif menu == menu_item_6:
 
 else:
     st.write("An invalid menu_item has been selected!")
+
 
 
 
