@@ -1,134 +1,206 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Set page title
-st.set_page_config(page_title="Researcher Profile and STEM Data Explorer", layout="wide")
+st.set_page_config(page_title="Researcher Profile", layout="wide")
 
 # Sidebar Menu
 st.sidebar.title("Navigation")
+
+menu_item_1 = "Profile"
+menu_item_2 = "Education"
+menu_item_3 = "Work Experience"
+menu_item_4 = "Skills"
+menu_item_5 = "Hobbies"
+menu_item_6 = "Contact"
+
+menu_sidebar_list = [menu_item_1, menu_item_2, menu_item_3, menu_item_4, menu_item_5, menu_item_6]
+
 menu = st.sidebar.radio(
     "Go to:",
-    ["Researcher Profile", "Education", "Work Experience", "Publications", "Skills", "Hobbies", "Contact"],
+    menu_sidebar_list,
 )
 
-# Dummy STEM data
-physics_data = pd.DataFrame({
-    "Experiment": ["Alpha Decay", "Beta Decay", "Gamma Ray Analysis", "Quark Study", "Higgs Boson"],
-    "Energy (MeV)": [4.2, 1.5, 2.9, 3.4, 7.1],
-    "Date": pd.date_range(start="2024-01-01", periods=5),
-})
-
-astronomy_data = pd.DataFrame({
-    "Celestial Object": ["Mars", "Venus", "Jupiter", "Saturn", "Moon"],
-    "Brightness (Magnitude)": [-2.0, -4.6, -1.8, 0.2, -12.7],
-    "Observation Date": pd.date_range(start="2024-01-01", periods=5),
-})
-
-weather_data = pd.DataFrame({
-    "City": ["Cape Town", "London", "New York", "Tokyo", "Sydney"],
-    "Temperature (°C)": [25, 10, -3, 15, 30],
-    "Humidity (%)": [65, 70, 55, 80, 50],
-    "Recorded Date": pd.date_range(start="2024-01-01", periods=5),
-})
-
 # Sections based on menu selection
-if menu == "Researcher Profile":
-    
-    st.title("Researcher Profile")
+if menu == menu_item_1:
+    st.title(f"{menu_item_1}")
+    st.sidebar.header(f"{menu_item_1} Options")
 
     # Collect basic information
     name = "Moegamat Anees Petersen"
+    level = "Master of Science (MSc)"
     field = "Material Science / Renewable Energy"
-    institution = "University of Western Cape (UWC)"
-    level_of_studies = "Master of Science (MSc)"
+    institution = "University of the Western Cape (UWC)"
+
+    message = "Moegamat Anees Petersen has striven through tough times and has always kept a smile on his dial. He has been fortunate enough however to complete a Standard Educatory Comprehension having gone through the Public Schooling System, firstly through Cypress Primary School from years 2010 through 2016, secondly through the Belgravia Secondary School from years 2017 through 2021, and currently Studying as a First Year at the University of the Western Cape. He has working experience of the voluntary sort for both Athlone City Parks Depot and Abdurahman Day Hospital, both for the year 2020. He entered the University with the wrong degree choice but believes that he will change his choice and career."
 
     # Display basic profile information
     st.write(f"**Name:** {name}")
+    st.write(f"**Level:** {level}")
     st.write(f"**Field of Research:** {field}")
     st.write(f"**Institution:** {institution}")
-    st.write(f"**Level of Studies:** {level_of_studies}")
+
+    image_url_link = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+    image_caption = "Nature (Pixabay)"
     
     st.image(
-    "https://as2.ftcdn.net/v2/jpg/07/54/47/57/1000_F_754475766_IFsiMAfL3W2EAdyeBubbe7FZNEAb6JKB.jpg",
-    caption="A CFD Simulation Image"
-)
-
-elif menu == "Education":
-    st.title("Education")
-
-    primary_school = "Cypress Primary School"
-
-    primary_year_min = 2010
-    primary_year_max = 2016
-    
-    secondary_school = "Belgravia High School"
-
-    secondary_year_min = 2017
-    secondary_year_max = 2021
-
-    st.write(f"**Primary School:** {primary_school} ({primary_year_min} - {primary_year_max})")
-    st.write(f"**Secondary School:** {secondary_school} ({secondary_year_min} - {secondary_year_max})")
-
-    item_1 = st.write("First School Leaving Certificate (FSLC)")
-    item_2 = st.write("Top Achiever Awards (Grades 2,4,5,6,7)")
-    item_3 = st.write("Junior Biologist Course (Grade 6)")
-
-    st.write(f"* {item_1} \n * {item_2} \n * {item_3}")
-
-elif menu == "STEM Data Explorer":
-    st.title("STEM Data Explorer")
-    st.sidebar.header("Data Selection")
-    
-    # Tabbed view for STEM data
-    data_option = st.sidebar.selectbox(
-        "Choose a dataset to explore", 
-        ["Physics Experiments", "Astronomy Observations", "Weather Data"]
+    image_url_link,
+    caption=image_caption
     )
 
-    if data_option == "Physics Experiments":
-        st.write("### Physics Experiment Data")
-        st.dataframe(physics_data)
-        # Add widget to filter by Energy levels
-        energy_filter = st.slider("Filter by Energy (MeV)", 0.0, 10.0, (0.0, 10.0))
-        filtered_physics = physics_data[
-            physics_data["Energy (MeV)"].between(energy_filter[0], energy_filter[1])
-        ]
-        st.write(f"Filtered Results for Energy Range {energy_filter}:")
-        st.dataframe(filtered_physics)
+    msg = st.write(f"**Message:** {message}")
 
-    elif data_option == "Astronomy Observations":
-        st.write("### Astronomy Observation Data")
-        st.dataframe(astronomy_data)
-        # Add widget to filter by Brightness
-        brightness_filter = st.slider("Filter by Brightness (Magnitude)", -15.0, 5.0, (-15.0, 5.0))
-        filtered_astronomy = astronomy_data[
-            astronomy_data["Brightness (Magnitude)"].between(brightness_filter[0], brightness_filter[1])
-        ]
-        st.write(f"Filtered Results for Brightness Range {brightness_filter}:")
-        st.dataframe(filtered_astronomy)
+elif menu == menu_item_2:
+    st.title(f"{menu_item_2}")
+    st.sidebar.header(f"{menu_item_2} Options")
 
-    elif data_option == "Weather Data":
-        st.write("### Weather Data")
-        st.dataframe(weather_data)
-        # Add widgets to filter by temperature and humidity
-        temp_filter = st.slider("Filter by Temperature (°C)", -10.0, 40.0, (-10.0, 40.0))
-        humidity_filter = st.slider("Filter by Humidity (%)", 0, 100, (0, 100))
-        filtered_weather = weather_data[
-            weather_data["Temperature (°C)"].between(temp_filter[0], temp_filter[1]) &
-            weather_data["Humidity (%)"].between(humidity_filter[0], humidity_filter[1])
-        ]
-        st.write(f"Filtered Results for Temperature {temp_filter} and Humidity {humidity_filter}:")
-        st.dataframe(filtered_weather)
-        
-        
+    primary_school_name = "Cypress Primary School"
+    primary_school_start_year = 2010
+    primary_school_end_year = 2016
 
-elif menu == "Contact":
-    # Add a contact section
-    st.header("Contact Information")
-    email = "4255277@myuwc.ac.za"
+    primary_achieve_1 = "First School Leaving Certificate (FSLC)"
+    primary_achieve_2 = "Top Achiever Awards (Grades 2,4,5,6,7)"
+    primary_achieve_3 = "Junior Biologist Course (Grade 6)"
 
-    st.write(f"You can reach me at {email}.")
+    high_school_name = "Belgravia High School"
+    high_school_start_year = 2017
+    high_school_end_year = 2021
+
+    high_achieve_1 = "National Senior Certificate (NSC)"
+    high_achieve_2 = "Top 10 Positions (Grades 8 - 12)"
+    high_achieve_3 = "Top 3 Position (Grade 12)"
+
+    uni_school_name = "University of the Western Cape"
+    uni_school_start_year = 2022
+    uni_school_end_year = 2026
+
+    uni_achieve_1 = "BSc, Hons and MSc in Physics"
+    uni_achieve_2 = "Deans Merit List Award for APM 123 module"
+    uni_achieve_3 = "BSc Cum Laude, Hons ~80% w.a. (effective Magna Cum Laude), MSc pursuing"
+
+    st.header(f"**Primary School:** {primary_school_name}")
+    st.write(f"({primary_school_start_year} - {primary_school_end_year})")
+    st.write(f"\t * {primary_achieve_1} \n \t * {primary_achieve_2} \n \t * {primary_achieve_3}")
+
+    st.header(f"**Secondary School:** {high_school_name}")
+    st.write(f"({high_school_start_year} - {high_school_end_year})")
+    st.write(f"\t * {high_achieve_1} \n \t * {high_achieve_2} \n \t * {high_achieve_3}")
+
+    st.header(f"**Tertiary School:** {uni_school_name}")
+    st.write(f"({uni_school_start_year} - {uni_school_end_year})")
+    st.write(f"\t * {uni_achieve_1} \n \t * {uni_achieve_2} \n \t * {uni_achieve_3}")
+
+elif menu == menu_item_3:
+    st.title(f"{menu_item_3}")
+    st.sidebar.header(f"{menu_item_3} Options")
+
+    experience_name_1 = "Abdurahman Day Hospital Volunteer"
+    experience_start_year_1 = 2020
+    experience_end_year_1 = 2020
+
+    experience_atr_1_1 = "Filing of patients folders into the Filing Cabinets"
+    experience_atr_1_2 = "Logging of patients folders into the Database"
+
+    experience_name_2 = "Athlone City Parks Depot Volunteer"
+    experience_start_year_2 = 2020
+    experience_end_year_2 = 2020
+
+    experience_atr_2_1 = "Cleaning of dirt-infested areas of the Nantes Park"
+    experience_atr_2_2 = "Observation for uncompliant Nantes Park Visitors"
+
+    experience_name_3 = "Math Tuition Tutor"
+    experience_start_year_3 = 2021
+    experience_end_year_3 = 2025
+
+    experience_atr_3_1 = "Wednesday tuition from 17:00 – 19:00 (Grades 8 - 12)"
+    experience_atr_3_2 = "Saturday Tuition from 09:00 – 13:00 (Grades 3 - 12)"
+
+    experience_name_4 = "PHY 151 Tutor"
+    experience_start_year_4 = 2025
+    experience_end_year_4 = 2025
+
+    experience_atr_4_1 = "Preparation of Memo for Weekly Group Task Assignments and/or Sessions"
+    experience_atr_4_2 = "Assisting Student during Weekly Group Task Sessions and Marking Group Task Assignments"
+
+    st.header(f"**{experience_name_1}**")
+    st.write(f"({experience_start_year_1} - {experience_end_year_1})")
+    st.write(f"\t * {experience_atr_1_1} \n \t * {experience_atr_1_2}")
+    
+    st.header(f"**{experience_name_2}**")
+    st.write(f"({experience_start_year_2} - {experience_end_year_2})")
+    st.write(f"\t * {experience_atr_2_1} \n \t * {experience_atr_2_2}")
+    
+    st.header(f"**{experience_name_3}**")
+    st.write(f"({experience_start_year_3} - {experience_end_year_3})")
+    st.write(f"\t * {experience_atr_3_1} \n \t * {experience_atr_3_2}")
+
+    st.header(f"**{experience_name_4}**")
+    st.write(f"({experience_start_year_4} - {experience_end_year_4})")
+    st.write(f"\t * {experience_atr_4_1} \n \t * {experience_atr_4_2}")
+
+elif menu == menu_item_4:
+    st.title(f"{menu_item_4}")
+    st.sidebar.header(f"{menu_item_4} Options")
+
+    label_1 = "Leadership"
+    label_2 = "Communication"
+    label_3 = "Professionalism"
+    label_4 = "Teamwork"
+    label_5 = "Critical Thinking"
+
+    size_1 = 20
+    size_2 = 21
+    size_3 = 18
+    size_4 = 22
+    size_5 = 19
+
+    explode_1 = 0
+    explode_2 = 0
+    explode_3 = 0
+    explode_4 = 0
+    explode_5 = 0
+
+    labels = [label_1, label_2, label_3, label_4, label_5]
+    sizes = [size_1, size_2, size_3, size_4, size_5]
+    explode = [explode_1, explode_2, explode_3, explode_4, explode_5]
+
+    fig_1, ax_1 = plt.subplots()
+    ax_1.pie(sizes, explode=explode, labels=labels, autopct = '%1.1f%%', shadow=True, startangle=90)
+    ax_1.axis('equal')
+
+    st.pyplot(fig_1)
+
+elif menu ==  menu_item_5:
+    st.title(f"{menu_item_5}")
+    st.sidebar.header(f"{menu_item_5} Options")
+
+    hobby_1 = "Playing Chess"
+    hobby_2 = "Reading Books"
+    hobby_3 = "Listening to Music"
+    hobby_4 = "Learning Languages"
+
+    st.write(f"* {hobby_1}")
+    st.write(f"* {hobby_2}")
+    st.write(f"* {hobby_3}")
+    st.write(f"* {hobby_4}")
+
+elif menu == menu_item_6:
+    st.title(f"{menu_item_6}")
+    st.sidebar.header(f"{menu_item_6} Options")
+
+    phone_number = "079-669-1963"
+    personal_email = "anees.petersen333@gmail.com"
+    university_email = "4255277@myuwc.ac.za"
+
+    st.write(f"**Phone:** {phone_number}")
+    st.write(f"**Personal Email:** {personal_email}")
+    st.write(f"**University Email** {university_email}")
+
+else:
+    st.write("An invalid menu_item has been selected!")
+
 
 
 
