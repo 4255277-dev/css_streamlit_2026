@@ -1,10 +1,8 @@
-import sys
-st.write(sys.executable)
-
 import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Set page title
 st.set_page_config(page_title="Researcher Profile", layout="wide")
@@ -147,33 +145,32 @@ elif menu == menu_item_4:
     st.title(f"{menu_item_4}")
     st.sidebar.header(f"{menu_item_4} Options")
 
-    label_1 = "Leadership"
-    label_2 = "Communication"
-    label_3 = "Professionalism"
-    label_4 = "Teamwork"
-    label_5 = "Critical Thinking"
+    labels = [
+        "Leadership",
+        "Communication",
+        "Professionalism",
+        "Teamwork",
+        "Critical Thinking"
+    ]
 
-    size_1 = 20
-    size_2 = 21
-    size_3 = 18
-    size_4 = 22
-    size_5 = 19
+    sizes = [20, 21, 18, 22, 19]
 
-    explode_1 = 0
-    explode_2 = 0
-    explode_3 = 0
-    explode_4 = 0
-    explode_5 = 0
+    fig_1 = px.pie(
+        names=labels,
+        values=sizes,
+        hole=0,                     # set to >0 for donut chart
+    )
 
-    labels = [label_1, label_2, label_3, label_4, label_5]
-    sizes = [size_1, size_2, size_3, size_4, size_5]
-    explode = [explode_1, explode_2, explode_3, explode_4, explode_5]
+    fig_1.update_traces(
+        textinfo="percent+label",
+        pull=[0, 0, 0, 0, 0]         # equivalent to explode
+    )
 
-    fig_1, ax_1 = plt.subplots()
-    ax_1.pie(sizes, explode=explode, labels=labels, autopct = '%1.1f%%', shadow=True, startangle=90)
-    ax_1.axis('equal')
+    fig_1.update_layout(
+        showlegend=True
+    )
 
-    st.pyplot(fig_1)
+    st.plotly_chart(fig_1, use_container_width=True)
 
 elif menu ==  menu_item_5:
     st.title(f"{menu_item_5}")
@@ -203,6 +200,7 @@ elif menu == menu_item_6:
 
 else:
     st.write("An invalid menu_item has been selected!")
+
 
 
 
