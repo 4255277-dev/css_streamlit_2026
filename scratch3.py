@@ -1,3 +1,6 @@
+import sys
+st.write(sys.executable)
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -200,6 +203,7 @@ elif menu == menu_item_6:
 
 else:
     st.write("An invalid menu_item has been selected!")
+
 
 
 
